@@ -2,6 +2,8 @@ package com.project.affirmations
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
+import com.project.affirmations.adapter.ItemAdapter
 import com.project.affirmations.model.data.Datasource
 
 class MainActivity : AppCompatActivity() {
@@ -10,6 +12,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val myDataset = Datasource().loadAffirmations()
-        
+        val recyclerView = findViewById<RecyclerView>(R.id.rvAffirmations)
+        recyclerView.adapter = ItemAdapter(this, myDataset)
+        recyclerView.setHasFixedSize(true)
+
     }
 }
